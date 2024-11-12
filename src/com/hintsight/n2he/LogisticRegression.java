@@ -41,14 +41,6 @@ public class LogisticRegression {
                     creditCardDetails[row][col] = (int) valueF;
                     col++;
                 }
-//                for (String cell : nextRecord) {
-//                    System.out.println(cell);
-//                    float cellF = Float.parseFloat(cell);
-//                    creditCardDetails[row][col] = (int) cellF;
-//                    creditCardDetails[row][col] = Integer.parseInt(cell);
-//                    col++;
-//                }
-//                System.out.println();
                 row++;
                 col = 0;
             }
@@ -87,7 +79,6 @@ public class LogisticRegression {
         //encrypt tabular data
         setFeatureLength(23);
         System.out.printf("Encrypting tabular data of user id %d\n", id);
-//        long[][] encryptedData = Encryption.encrypt(Arrays.copyOfRange(creditCardDetails[id-1], 1, 24), publicKey);
         long[][] encryptedData = Encryption.encrypt(creditCardDetails[id-1], publicKey);
 
         //POST request to cloud server
@@ -101,7 +92,7 @@ public class LogisticRegression {
         postData.put("name", username);
         postData.put("feature_vector", encryptedData);
 
-        String serverPostUri = "https://fr-demo-01.hintsight.com";
+        String serverPostUri = "<SERVER_URL>";
         try {
             NetworkManager.postJSON(serverPostUri, postData);
             System.out.printf("POST request success for username [%s] with id [%s]\n",
@@ -132,7 +123,7 @@ public class LogisticRegression {
         System.out.println("Read in secret key.");
 
         //GET request from cloud server
-        String serverGetUri = "https://fr-demo-01.hintsight.com/"
+        String serverGetUri = "<SERVER_URL>"
                 + postData.get("name") + "_" + postData.get("id") + ".json";
         UserEncryptedResult encryptedResult;
         HttpResponse<String> response;
