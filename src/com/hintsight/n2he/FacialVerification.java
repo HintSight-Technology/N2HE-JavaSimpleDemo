@@ -75,7 +75,7 @@ public class FacialVerification {
         postData.put("name", username);
         postData.put("feature_vector", encryptedData);
 
-        String serverPostUri = "https://fr-demo-01.hintsight.com";
+        String serverPostUri = "<SERVER_URL>";
         try {
             NetworkManager.postJSON(serverPostUri, postData);
             System.out.printf("POST request success for username [%s] with id [%s]\n",
@@ -106,7 +106,7 @@ public class FacialVerification {
         System.out.println("Read in secret key.");
 
         //GET request from cloud server
-        String serverGetUri = "https://fr-demo-01.hintsight.com/"
+        String serverGetUri = "<SERVER_URL>"
                 + postData.get("name") + "_" + postData.get("id") + ".json";
         UserEncryptedResult encryptedResult;
         HttpResponse<String> response;
