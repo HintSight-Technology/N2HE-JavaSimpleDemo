@@ -9,7 +9,7 @@ public class Main {
         // Logistic Regression
         int numberOfUsers = 6000;
         int numberOfRows = 25;
-        int id = 14; //can be modified to test other id 
+        int id = 88; //can be modified to test other id 
         String filepath = "src/X_test.csv";
         LogisticRegression.predict(filepath, numberOfUsers, numberOfRows, id);
     }
